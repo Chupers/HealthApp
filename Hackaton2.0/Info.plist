@@ -20,6 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>dsajbdsajkdhsakjdhsakjdhsakjdhaskjdh</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>dasjdsajhdaskjdhaskjdhaskjdhasjkdaskjd</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>kbhhkkhjjhjhasfjlfsjhfssfajfsafshaskfs</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>kjdshadshsadkhaskjdhaskjdhaskjdhaskjd</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
