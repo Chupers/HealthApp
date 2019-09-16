@@ -8,150 +8,89 @@
 
 import UIKit
 
-import HealthKit
-class ViewController: UIViewController {
-  
-    @IBOutlet weak var ouu: UILabel!
-    @IBOutlet weak var water: UILabel!
-    @IBOutlet weak var calori: UILabel!
-    func authorize(completion: @escaping (Bool, Error?) -> Void) {
-        guard HKHealthStore.isHealthDataAvailable() else {
-            completion(false, Error.self as! Error.Type as! Error)
-            return
-        }
-        
-        guard
-            let dob = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
-            let sex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
-            let energy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned),
-            let water = HKObjectType.quantityType(forIdentifier: .dietaryWater),
-        let step = HKObjectType.quantityType(forIdentifier: .stepCount)
-        else {
-                completion(false, Error.self as! Error.Type as! Error)
-                return
-        }
-        
-        let writing: Set<HKSampleType> = [water]
-        let reading: Set<HKObjectType> = [dob, sex, energy, water,step]
-        
-        HKHealthStore().requestAuthorization(toShare: writing, read: reading, completion: completion)
-    }
-    func readEnergy() {
-        guard let energyType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned) else {
-            print("Sample type not available")
-            return
-        }
-        let Lastday = Calendar.current.date(byAdding: .day,value: -1, to: Date())
-        let last24hPredicate = HKQuery.predicateForSamples(withStart: Lastday, end: Date(), options: .strictEndDate)
-        
-        let energyQuery = HKSampleQuery(sampleType: energyType,
-                                        predicate: last24hPredicate,
-                                        limit: HKObjectQueryNoLimit,
-                                        sortDescriptors: nil) {
-                                            (query, sample, error) in
-                                            
-                                            guard
-                                                error == nil,
-                                                let quantitySamples = sample as? [HKQuantitySample] else {
-                                                    print("Something went wrong: \(error)")
-                                                    return
-                                            }
-                                            
-                                            let total = quantitySamples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.kilocalorie()) }
-                                            print("Total kcal: \(total)")
-                                            DispatchQueue.main.async {
-                                                self.calori.text = String(format: "Energy: %.2f", total)
-                                            }
-        }
-        HKHealthStore().execute(energyQuery)
-    }
-    func readWater() {
-        guard let waterType = HKSampleType.quantityType(forIdentifier: .dietaryWater) else {
-            print("Sample type not available")
-            return
-        }
-                let Lastday = Calendar.current.date(byAdding: .day,value: -1, to: Date())
-        let last24hPredicate = HKQuery.predicateForSamples(withStart: Lastday, end: Date(), options: .strictEndDate)
-        
-        let waterQuery = HKSampleQuery(sampleType: waterType,
-                                       predicate: last24hPredicate,
-                                       limit: HKObjectQueryNoLimit,
-                                       sortDescriptors: nil) {
-                                        (query, samples, error) in
-                                        
-                                        guard
-                                            error == nil,
-                                            let quantitySamples = samples as? [HKQuantitySample] else {
-                                                print("Something went wrong: \(error)")
-                                                return
-                                        }
-                                        
-                                        let total = quantitySamples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.literUnit(with: .milli)) }
-                                        print("total water: \(total)")
-                                        DispatchQueue.main.async {
-                                            self.water.text = String(format: "Water: %.2f", total)
-                                        }
-        }
-        HKHealthStore().execute(waterQuery)
-    }
-    @IBAction func writeWater() {
-        guard let waterType = HKSampleType.quantityType(forIdentifier: .dietaryWater) else {
-            print("Sample type not available")
-            return
-        }
-        
-        let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: 200.0)
-        let today = Date()
-        let waterQuantitySample = HKQuantitySample(type: waterType, quantity: waterQuantity, start: today, end: today)
-        
-        HKHealthStore().save(waterQuantitySample) { (success, error) in
-            print("HK write finished - success: \(success); error: \(error)")
-            self.readWater()
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    var ChartData = [Indicator]()
+    {
+        didSet{
+            DispatchQueue.main.async {
+                self.ChartCollectionView.reloadData()
+            }
         }
     }
-    func readStep() {
-        guard let StepType = HKSampleType.quantityType(forIdentifier: .stepCount) else {
-            print("Sample type not available")
-            return
-        }
-        let Lastday = Calendar.current.date(byAdding: .day,value: -1, to: Date())
-        let last24hPredicate = HKQuery.predicateForSamples(withStart: Lastday, end: Date(), options: .strictEndDate)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ChartData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let Cell = self.ChartCollectionView.dequeueReusableCell(withReuseIdentifier:"Cell" , for: indexPath) as! ChartCollectionViewCell
+        let queue = DispatchQueue.main
+        queue.async {
+            
         
-        let waterQuery = HKSampleQuery(sampleType: StepType,
-                                       predicate: last24hPredicate,
-                                       limit: HKObjectQueryNoLimit,
-                                       sortDescriptors: nil) {
-                                        (query, samples, error) in
-                                        
-                                        guard
-                                            error == nil,
-                                            let quantitySamples = samples as? [HKQuantitySample] else {
-                                                print("Something went wrong: \(error)")
-                                                return
-                                        }
-                                        
-                                        let total = quantitySamples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.count()) }
-                                        print("total water: \(total)")
-                                        DispatchQueue.main.async {
-                                            self.ouu.text = String(format: "Step: %.2f", total)
-                                        }
+            self.AnimaitChart(View: Cell.ChartView, indicator: self.ChartData[indexPath.row])
         }
-        HKHealthStore().execute(waterQuery)
+        Cell.InfoLabel.text = "\( 100*ChartData[indexPath.row].Value!/ChartData[indexPath.row].Norms)%"
+        return Cell
+        
+    }
+    func AnimaitChart (View : UIView , indicator : Indicator){
+        let trackLayer = CAShapeLayer()
+        
+        let shapeLayer = CAShapeLayer()
+        let center = View.center
+        let circularPath = UIBezierPath(arcCenter: center, radius: 50, startAngle: -CGFloat.pi/2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        trackLayer.path = circularPath.cgPath
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 10
+        trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.lineCap  = CAShapeLayerLineCap.round
+        View.layer.addSublayer(trackLayer)
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeColor = indicator.Color.cgColor
+        shapeLayer.lineWidth = 10
+       
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = 1
+        animation.fromValue = 0
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        shapeLayer.add(animation, forKey: "AnimaitChart")
+        animation.toValue = CGFloat((indicator.Value!/indicator.Norms)*0.8)
+        shapeLayer.strokeEnd = CGFloat((indicator.Value!/indicator.Norms)*0.8)
+        View.layer.addSublayer(shapeLayer)
+        
     }
   
+    
+    @IBAction func AddWater(_ sender: Any) {
+        control.writeWater()
+        var index = 0
+        for item in ChartData {
+            if (item.NameOfIndicator == "Water")
+            {
+                ChartData[index] = self.control.readWater()
+                
+            }
+            index += 1
+        }
+        index = 0
+    }
+    
+    
+   let control = HealthControl()
+    @IBOutlet weak var ChartCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        authorize { (success, error) in
-            print("HK Authorization finished - success: \(success); error: \(error)")
-           
-            self.readEnergy()
-            self.readWater()
-            self.readStep()
+       
+        DispatchQueue.main.async {
+            self.ChartData.append(self.control.readEnergy())
+            self.ChartData.append(self.control.readWater())
+            self.ChartData.append(self.control.readStep())
         }
-
         
-        // Do any additional setup after loading the view.
-    }
+       }
 
 
 }

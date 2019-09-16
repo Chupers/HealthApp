@@ -14,6 +14,8 @@
 		D80319AB22D9ACBE0087F1CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D80319A922D9ACBE0087F1CB /* LaunchScreen.storyboard */; };
 		D80319B322D9AD010087F1CB /* HealthControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80319B222D9AD010087F1CB /* HealthControl.swift */; };
 		D80319B622D9C7FD0087F1CB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80319B522D9C7FD0087F1CB /* HealthKit.framework */; };
+		D8185CA723295A2D00C66FE8 /* ChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8185CA623295A2D00C66FE8 /* ChartCollectionViewCell.swift */; };
+		D82A7A3823292BF6000A3C5D /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82A7A3723292BF6000A3C5D /* Indicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		D80319B222D9AD010087F1CB /* HealthControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthControl.swift; sourceTree = "<group>"; };
 		D80319B522D9C7FD0087F1CB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		D80319B722D9C7FD0087F1CB /* Hackaton2.0.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hackaton2.0.entitlements; sourceTree = "<group>"; };
+		D8185CA623295A2D00C66FE8 /* ChartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCollectionViewCell.swift; sourceTree = "<group>"; };
+		D82A7A3723292BF6000A3C5D /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				D80319A922D9ACBE0087F1CB /* LaunchScreen.storyboard */,
 				D80319AC22D9ACBE0087F1CB /* Info.plist */,
 				D80319B222D9AD010087F1CB /* HealthControl.swift */,
+				D82A7A3723292BF6000A3C5D /* Indicator.swift */,
+				D8185CA623295A2D00C66FE8 /* ChartCollectionViewCell.swift */,
 			);
 			path = Hackaton2.0;
 			sourceTree = "<group>";
@@ -158,8 +164,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D80319B322D9AD010087F1CB /* HealthControl.swift in Sources */,
+				D8185CA723295A2D00C66FE8 /* ChartCollectionViewCell.swift in Sources */,
 				D80319A322D9ACB70087F1CB /* ViewController.swift in Sources */,
 				D80319A122D9ACB70087F1CB /* AppDelegate.swift in Sources */,
+				D82A7A3823292BF6000A3C5D /* Indicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -291,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -308,13 +316,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Hackaton2.0/Hackaton2.0.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3295JBLJ56;
+				DEVELOPMENT_TEAM = 93ZMB4L59C;
 				INFOPLIST_FILE = Hackaton2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "EChupris.Hackaton2-0jjj";
+				PRODUCT_BUNDLE_IDENTIFIER = EChupri1s.Hackaton2.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,13 +337,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Hackaton2.0/Hackaton2.0.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3295JBLJ56;
+				DEVELOPMENT_TEAM = 93ZMB4L59C;
 				INFOPLIST_FILE = Hackaton2.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "EChupris.Hackaton2-0jjj";
+				PRODUCT_BUNDLE_IDENTIFIER = EChupri1s.Hackaton2.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

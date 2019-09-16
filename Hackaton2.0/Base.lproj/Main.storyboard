@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="efM-dM-nDP">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,56 +10,105 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="Kqb-Jh-7JU">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hackaton2_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <navigationController id="efM-dM-nDP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oTR-k2-0qY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JTY-bF-0SE" kind="relationship" relationship="rootViewController" id="ZnR-41-A7D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oBo-po-cff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-428" y="-123"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dpc-5y-bey">
+            <objects>
+                <viewController id="JTY-bF-0SE" customClass="ViewController" customModule="Hackaton2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a2E-GU-YSH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-Ej-n6p">
-                                <rect key="frame" x="138" y="209" width="140" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bav-cR-A85">
-                                <rect key="frame" x="138" y="289" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajx-Q3-56D">
-                                <rect key="frame" x="136" y="348" width="116" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UqL-LU-MfB">
+                                <rect key="frame" x="15" y="705" width="384" height="142"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P1d-ug-6mm">
+                                    <size key="itemSize" width="136" height="130"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ovl-AX-Kvj" customClass="ChartCollectionViewCell" customModule="Hackaton2_0" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="6" width="136" height="130"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2J-R8-fS1" customClass="ChartCollectionViewCell" customModule="Hackaton2_0" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="130"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVV-5t-KId">
+                                                    <rect key="frame" x="33" y="44" width="68" height="49"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="RVV-5t-KId" firstAttribute="centerY" secondItem="Ovl-AX-Kvj" secondAttribute="centerY" constant="3.5" id="IsB-Rd-GIj"/>
+                                            <constraint firstAttribute="trailing" secondItem="U2J-R8-fS1" secondAttribute="trailing" id="O82-LW-e1t"/>
+                                            <constraint firstItem="RVV-5t-KId" firstAttribute="centerX" secondItem="Ovl-AX-Kvj" secondAttribute="centerX" constant="-1" id="Ova-9A-fDF"/>
+                                            <constraint firstItem="U2J-R8-fS1" firstAttribute="leading" secondItem="Ovl-AX-Kvj" secondAttribute="leading" id="cMp-UZ-xIF"/>
+                                            <constraint firstItem="U2J-R8-fS1" firstAttribute="top" secondItem="Ovl-AX-Kvj" secondAttribute="top" id="lnR-wE-WC0"/>
+                                            <constraint firstAttribute="bottom" secondItem="U2J-R8-fS1" secondAttribute="bottom" id="vFI-Dm-dxa"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="ChartView" destination="U2J-R8-fS1" id="2NK-1u-sG9"/>
+                                            <outlet property="InfoLabel" destination="RVV-5t-KId" id="YSb-iq-JEd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="JTY-bF-0SE" id="GXN-GH-qor"/>
+                                    <outlet property="delegate" destination="JTY-bF-0SE" id="Tjp-hy-4e5"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swg-FW-pW9">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="writeWater" destination="BYZ-38-t0r" eventType="touchUpInside" id="o1U-VN-rMO"/>
+                                    <action selector="AddWater:" destination="JTY-bF-0SE" eventType="touchUpInside" id="kN0-hy-nOT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJU-5f-aRJ">
-                                <rect key="frame" x="138" y="159" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1PB-Zi-Xem" firstAttribute="trailing" secondItem="UqL-LU-MfB" secondAttribute="trailing" constant="15" id="E7x-6H-Hcq"/>
+                            <constraint firstItem="1PB-Zi-Xem" firstAttribute="bottom" secondItem="UqL-LU-MfB" secondAttribute="bottom" constant="15" id="WT4-5T-eU5"/>
+                            <constraint firstItem="swg-FW-pW9" firstAttribute="centerY" secondItem="a2E-GU-YSH" secondAttribute="centerY" id="c3X-oF-9jF"/>
+                            <constraint firstItem="swg-FW-pW9" firstAttribute="centerX" secondItem="a2E-GU-YSH" secondAttribute="centerX" id="ces-Mq-Wqg"/>
+                            <constraint firstItem="UqL-LU-MfB" firstAttribute="leading" secondItem="1PB-Zi-Xem" secondAttribute="leading" constant="15" id="reu-RB-qvb"/>
+                            <constraint firstItem="UqL-LU-MfB" firstAttribute="top" secondItem="1PB-Zi-Xem" secondAttribute="top" constant="617" id="ydu-k4-sNL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1PB-Zi-Xem"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hpo-XI-2ZU"/>
                     <connections>
-                        <outlet property="calori" destination="jJU-5f-aRJ" id="4X8-Da-Lpa"/>
-                        <outlet property="ouu" destination="bav-cR-A85" id="x2p-Lw-ars"/>
-                        <outlet property="water" destination="hhz-Ej-n6p" id="Ipf-Iw-aSd"/>
+                        <outlet property="ChartCollectionView" destination="UqL-LU-MfB" id="dYe-2W-3oa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BvH-w7-rPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
+            <point key="canvasLocation" x="447.82608695652175" y="-126.5625"/>
         </scene>
     </scenes>
 </document>

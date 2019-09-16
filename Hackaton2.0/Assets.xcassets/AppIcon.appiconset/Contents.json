@@ -1,9 +1,8 @@
 {
   "images" : [
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Montazhnaya_oblast_59 3.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
@@ -12,9 +11,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Montazhnaya_oblast_59 2.png",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
@@ -23,9 +21,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Montazhnaya_oblast_51 2.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {
@@ -34,9 +31,8 @@
       "scale" : "3x"
     },
     {
+      "idiom" : "iphone",
       "size" : "60x60",
-      "idiom" : "iphone",
-      "filename" : "Montazhnaya_oblast_51 2-1.png",
       "scale" : "2x"
     },
     {
